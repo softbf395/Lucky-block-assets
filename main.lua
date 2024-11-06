@@ -38,6 +38,10 @@ end
 function 
 if isPlayerInDoors(game.Players.LocalPlayer) then
   game.ReplicatedStorage.GameData.LatestRoom.Changed:Connect(function(
-      
+      lucky:Clone().Parent=game.Players.LocalPlayer.Backpack
     end)
+    else
+      while wait(60) do
+           lucky:Clone().Parent=game.Players.LocalPlayer.Backpack
+      end
 end
