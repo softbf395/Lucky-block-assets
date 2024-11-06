@@ -1,5 +1,7 @@
-local lucky = Instance.new("Tool", game.ReplicatedStorage) -- Create a Tool
-local luckyblock = Instance.new("Part", lucky) -- Create a MeshPart as child of Tool
+local lucky = Instance.new("Tool") -- Create a Tool
+lucky.Parent=game.ReplicatedStorage
+local luckyblock = Instance.new("Part") -- Create a MeshPart as child of Tool
+luckyblock.Parent = lucky
 luckyblock.Name="Handle"
 luckyblock.Size=Vector3.new(1.5,1.5,1.5)
 local TriggeredFunctions={
