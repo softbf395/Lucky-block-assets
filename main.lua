@@ -4,9 +4,6 @@ local luckyblock = Instance.new("Part")
 luckyblock.Parent = lucky
 luckyblock.Name="Handle"
 luckyblock.Size=Vector3.new(1.5,1.5,1.5)
-local TriggeredFunctions={
-  ["glitchiness"]={Chance=20,CallBack="functions/glitchiness"}
-}
 
 local decalTextureId = "rbxassetid://8277401585"
 
@@ -21,9 +18,12 @@ function setDecalsToAllFaces()
   end
 end
 Instance.new("LocalScript", lucky).Source=[[
+local TriggeredFunctions={
+  ["glitchiness"]={Chance=20,CallBack="functions/glitchiness"}
+}
 script.Parent.Activated:Connect(function(
   for i, table in ipairs(TriggeredFunctions) do
-     loadstring(game:HttpGet("https://raw.githubusercontent.com/softbf395/Lucky-block-assets/main/]]..table.CallBack..[[.lua
+     loadstring(game:HttpGet("https://raw.githubusercontent.com/softbf395/Lucky-block-assets/main/"..table.CallBack..".lua"
   end
 end)
 ]]
