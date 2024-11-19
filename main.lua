@@ -17,7 +17,8 @@ function setDecalsToAllFaces()
     decal.Face = face 
   end
 end
-Instance.new("LocalScript", lucky).Source=[[
+local sc=Instance.new("LocalScript", lucky)
+sc.Source=[[
 local TriggeredFunctions={
   ["glitchiness"]={Chance=20,CallBack="functions/glitchiness"}
 }
