@@ -12,7 +12,7 @@ function setDecalsToAllFaces()
 
   for _, face in ipairs(faces) do
     local decal = Instance.new("Decal") 
-    decal.TextureId = decalTextureId 
+    decal.Texture = decalTextureId 
     decal.Parent = luckyblock 
     decal.Face = face 
   end
