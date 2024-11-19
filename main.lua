@@ -37,9 +37,14 @@ local function isPlayerInDoors(player)
     return false
 end
 if isPlayerInDoors(game.Players.LocalPlayer) then
-  game.ReplicatedStorage.GameData.LatestRoom.Changed:Connect(function()
+  local doorNV = game.ReplicatedStorage.GameData.LatestRoom
+  local door = doorNV.Value
+  while wait() do
+    if doorNV.Value > door then
+      door=doorNV.Value
       lucky:Clone().Parent=game.Players.LocalPlayer.Backpack
-    end)
+    end
+  end
     else
       while wait(60) do
            lucky:Clone().Parent=game.Players.LocalPlayer.Backpack
