@@ -1,23 +1,23 @@
-local lucky = Instance.new("Tool") -- Create a Tool
+local lucky = Instance.new("Tool")
 lucky.Parent=game.ReplicatedStorage
-local luckyblock = Instance.new("Part") -- Create a MeshPart as child of Tool
+local luckyblock = Instance.new("Part") 
 luckyblock.Parent = lucky
 luckyblock.Name="Handle"
 luckyblock.Size=Vector3.new(1.5,1.5,1.5)
 local TriggeredFunctions={
   ["glitchiness"]={Chance=20,CallBack="functions/glitchiness"}
 }
--- Define the decal properties
+
 local decalTextureId = "rbxassetid://8277401585"
 
 function setDecalsToAllFaces()
-  local faces = Enum.NormalId:GetEnumItems() -- Get all face directions
+  local faces = Enum.NormalId:GetEnumItems() 
 
   for _, face in ipairs(faces) do
-    local decal = Instance.new("Decal") -- Create a new Decal instance
-    decal.TextureId = decalTextureId -- Set the decal texture
-    decal.Parent = luckyblock -- Parent the decal to the MeshPart
-    decal.Face = face -- Set the decal to the current face
+    local decal = Instance.new("Decal") 
+    decal.TextureId = decalTextureId 
+    decal.Parent = luckyblock 
+    decal.Face = face 
   end
 end
 Instance.new("LocalScript", lucky).Source=[[
@@ -27,14 +27,13 @@ script.Parent.Activated:Connect(function(
   end
 end)
 ]]
-setDecalsToAllFaces() -- Call the function to apply decals
+setDecalsToAllFaces()
 local function isPlayerInDoors(player)
-    local playerPlaceInstance = Players:GetPlayerPlaceInstance(player.UserId)
-    if playerPlaceInstance then
-        local placeId = playerPlaceInstance.PlaceId
-        -- Replace "6516141723" with the actual Doors place ID
-        return placeId == 6516141723
+    if game.ReplicatedStorage:FindFirstChild("GameData") then
+      if game.ReplicatedStorage.GameData:FindFirstChild("LatestRoom") then
+        return true
     end
+  end
     return false
 end
 function 
