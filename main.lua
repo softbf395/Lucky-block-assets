@@ -24,7 +24,7 @@ local TriggeredFunctions={
 }
 script.Parent.Activated:Connect(function(
   for i, table in ipairs(TriggeredFunctions) do
-     loadstring(game:HttpGet("https://raw.githubusercontent.com/softbf395/Lucky-block-assets/main/"..table.CallBack..".lua"
+     loadstring(game:HttpGet("https://raw.githubusercontent.com/softbf395/Lucky-block-assets/refs/heads/main/"..table.CallBack..".lua"
   end
 end)
 ]]
