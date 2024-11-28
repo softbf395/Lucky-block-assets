@@ -24,7 +24,7 @@ local TriggeredFunctions={
   ["glitchiness"]={Chance=20,CallBack="functions/glitchiness"}
 }
 function activator(block)
-  block.Activated:Connect(function(
+  block.Activated:Connect(function()
       local isFunction=false
       if math.rsndom(1,100)<=25 then
         isFunction=true
