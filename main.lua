@@ -19,17 +19,38 @@ function setDecalsToAllFaces()
     decal.Face = face 
   end
 end
-local sc=Instance.new("LocalScript", lucky)
-sc.Source=[[
+
 local TriggeredFunctions={
   ["glitchiness"]={Chance=20,CallBack="functions/glitchiness"}
 }
-script.Parent.Activated:Connect(function(
-  for i, table in ipairs(TriggeredFunctions) do
+function activator(block)
+  block.Activated:Connect(function(
+      local isFunction=false
+      if math.rsndom(1,100)<=25 then
+        isFunction=true
+      end
+  if isFunction==true then for i, table in ipairs(TriggeredFunctions) do
      loadstring(game:HttpGet("https://raw.githubusercontent.com/softbf395/Lucky-block-assets/refs/heads/main/"..table.CallBack..".lua"
-  end
+  end 
+          else
+            local isTool=math.random(1,100)<=50
+            if isTool then
+              local tool
+              while tool==nil do
+                wait()
+                for _, too in ipairs(game:GetDescendants()) do
+                  if too:IsA("Tool") and math.random(1,100)<=15 then
+                    tool=too
+                    break
+                  end
+                end
+              end
+              tool:Clone().Parent=game.Players.LocalPlayer.Backpack
+          end
+          block:Destroy()
 end)
-]]
+        end
+
 setDecalsToAllFaces()
 local function isPlayerInDoors(player)
     if game.ReplicatedStorage:FindFirstChild("GameData") then
@@ -47,21 +68,13 @@ if isPlayerInDoors(game.Players.LocalPlayer) then
       door=doorNV.Value
       local block = lucky:Clone()
       block.Parent=game.Players.LocalPlayer.Backpack
-      block.Activated:Connect(function()
-  for i, table in ipairs(TriggeredFunctions) do
-     loadstring(game:HttpGet("https://raw.githubusercontent.com/softbf395/Lucky-block-assets/refs/heads/main/"..table.CallBack..".lua")
-  end
-end)
+      activator(block)
     end
   end
     else
       while wait(10) do
            local block = lucky:Clone()
         block.Parent=game.Players.LocalPlayer.Backpack
-      block.Activated:Connect(function()
-  for i, table in ipairs(TriggeredFunctions) do
-     loadstring(game:HttpGet("https://raw.githubusercontent.com/softbf395/Lucky-block-assets/refs/heads/main/"..table.CallBack..".lua")
-  end
-end)
+      activator(block)
       end
 end
